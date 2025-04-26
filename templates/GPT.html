@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPT Clone Result</title>
+</head>
+<body>
+    <h1>GPT Clone Result</h1>
+    <a href="/">Back to Home</a>
+    <form action="/gptclone" method="post">
+        <label for="search">New Query:</label>
+        <input type="text" id="search" name="search">
+        <button type="submit">Submit</button>
+    </form>
+    {% if result != 'None' %}
+        <h2>Result:</h2>
+        <p>Query: {{ query }}</p>
+        <p>Response: {{ result }}</p>
+    {% endif %}
+</body>
+</html>

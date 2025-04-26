@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChatGPT Interface</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+    .chat-container {
+        max-width: 600px;
+        margin: 20px auto;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    .chat-header {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    .chat-messages {
+        padding: 10px;
+        overflow-y: auto;
+        height: 300px;
+    }
+    .message {
+        background-color: #ffffff;
+        border-radius: 5px;
+        padding: 8px;
+        margin-bottom: 8px;
+        max-width: 70%;
+    }
+    .message.received {
+        background-color: #f1f0f0;
+        align-self: flex-start;
+    }
+    .message.sent {
+        background-color: #4CAF50;
+        color: white;
+        align-self: flex-end;
+    }
+    .message-content {
+        word-wrap: break-word;
+    }
+    .message-time {
+        font-size: 12px;
+        color: #777;
+        margin-left: 8px;
+    }
+    .message.sent .message-time {
+        text-align: right;
+        margin-left: 0;
+        margin-right: 8px;
+    }
+    .chat-input {
+        display: flex;
+        background-color: #f0f0f0;
+        padding: 10px;
+    }
+    .input-field {
+        flex: 1;
+        border: none;
+        padding: 8px;
+        border-radius: 20px;
+        margin-right: 10px;
+        font-size: 14px;
+    }
+    .send-button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+{% if query %}
+<div class="chat-container">
+    <div class="chat-header">ChatGPT</div>
+    <div class="chat-messages" id="chat-messages">
+        <div class="message received">
+            <div class="message-content">
+                {{ query }}
+            </div>
+            <div class="message-time">10:00 AM</div>
+        </div>
+        {% endif %}
+        {% if result %}
+        <div class="message sent">
+            <div class="message-content">
+                
+                    {{ result }}
+                
+                </div>
+                <div class="message-time">10:05 AM</div>
+            </div>
+        </div>
+        {% endif %}
+    <div class="chat-input">
+        <form action="/gemini" method="POST" class="chat-input">
+            <input type="text" name="search" class="input-field" placeholder="Type your message..." required>
+            <input class="send-button" type="submit" value="send">
+        </form></div>
+</div>
+
+</body>
+</html>

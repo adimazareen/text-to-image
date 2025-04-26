@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Binaires GPT</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Your custom styles -->
+    <style>
+        body {
+            transition: background-color 0.5s ease;
+        }
+    </style>
+</head>
+<body class="bg-dark">
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Data Binaires GPT</h3>
+               <!--      <img src="{{ url_for('static', filename='./db.png') }}" class="img-fluid mb-3" alt="Awesome Im -->
+                </div>
+                <div class="card-body">
+                    <!-- Dark/Light Mode Toggle -->
+                    <!-- <div class="form-check form-switch mb-3">
+                        <input class="form-check-input" type="checkbox" id="darkModeToggle">
+                        <label class="form-check-label" for="darkModeToggle">Dark Mode</label>
+                    </div> -->
+                    <!-- Form for User Input -->
+                    <form action="/image" method="post">
+                        <div class="mb-3">
+                            <label for="prompt" class="form-label">Enter a prompt:</label>
+                            <input type="text" class="form-control" id="prompt" name="userprompt" required>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Generate</button>
+                        </div>
+                    </form>
+                    {% if prompt %}
+                    <h2>Generated Image: {{ prompt }}</h2>
+
+                    <div style="overflow: hidden;" >
+                    <img src="{{ generated_url }}" alt="Image" style=" height: 100%; width: 100%;">
+                    <a href="{{ generated_url }}.png" download="downloaded_image.png" class="download-button">Download Image</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and Popper.js (Optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Your custom scripts -->
+<script>
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('change', () => {
+        document.body.classList.toggle('bg-dark');
+        document.body.classList.toggle('text-light');
+    });
+</script>
